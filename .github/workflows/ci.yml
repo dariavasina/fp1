@@ -23,8 +23,9 @@ jobs:
 
       - name: Install dependencies
         run: |
+          opam install . --deps-only --with-test
           opam install dune -y
-          eval $(opam env)
+          echo "::add-path::$(opam var bin)"
 
       - name: Build project
         run: dune build
