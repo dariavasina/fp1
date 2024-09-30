@@ -13,36 +13,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Set up OCaml
-        uses: avsm/setup-ocaml@v2
-        with:
-          ocaml-compiler: 4.14.0
+      - name: Set up OPAM
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y opam
+          opam init --disable-sandboxing -y
+          eval $(opam env)
 
       # Caching step
       - name: Cache OPAM packages
-        uses: actions/cache@v3
+        uses: actions/cache@v2
         with:
-          path: |
-            ~/.opam
-            ~/.opam/*/lib
-            ~/.opam/*/bin
-          key: ${{ runner.os }}-opam-${{ hashFiles('**/opam.locked') }}-${{ hashFiles('**/dune') }}
+          path: ~/.opam
+          key: ${{ runner.os }}-opam-${{ hashFiles('**/*.opam') }}
           restore-keys: |
-            ${{ runner.os }}-opam-${{ hashFiles('**/opam.locked') }}-
             ${{ runner.os }}-opam-
-            ${{ runner.os }}-
 
       - name: Install dependencies
-        run: opam install . --deps-only --with-test
-
-      - name: Update environment
-        run: eval $(opam env)
+        run: |
+          eval $(opam env)
+          opam install dune
 
       - name: Build project
-        run: dune build
+        run: |
+          eval $(opam env)
+          dune build
 
       - name: Run tests
         run: dune runtest
