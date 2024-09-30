@@ -45,6 +45,6 @@ let max_product_with_map lst len =
   List.map (fun i -> List.fold_left ( * ) 1 (sublist i len lst)) (List.init (List.length lst - len + 1) (fun i -> i))
   |> List.fold_left max 0
 
-let max_product_lazy lst len =
+(* let max_product_lazy lst len =
   let seq = Seq.init (List.length lst - len + 1) (fun i -> sublist i len lst) in
-  Seq.fold_left (fun max_prod seq -> max max_prod (List.fold_left ( * ) 1 seq)) 0 seq
+  Seq.fold_left (fun max_prod seq -> max max_prod (List.fold_left ( * ) 1 seq)) 0 seq *)

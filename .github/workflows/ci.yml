@@ -27,7 +27,6 @@ jobs:
           eval $(opam env)
           opam install dune
           opam install alcotest -y
-          opam install seq -y
 
       - name: Build project
         run: |
