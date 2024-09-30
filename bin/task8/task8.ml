@@ -39,15 +39,26 @@ let max_product_tail_recursive lst len =
         aux xs len new_max
   in
   aux lst len 0
-  let max_product_modular lst len =
+
+let max_product_modular lst len =
+  if List.length lst < len then 0
+  else
     let sequences = List.init (List.length lst - len + 1) ~f:(fun i -> sublist i len lst) in
     let valid_sequences = List.filter ~f:(fun seq -> List.length seq = len) sequences in
     List.fold_left ~f:(fun max_prod seq -> max max_prod (List.fold_left ~f:( * ) ~init:1 seq)) ~init:0 valid_sequences
 
+
 let max_product_with_map lst len =
-  List.map ~f:(fun i -> List.fold_left ~f:( * ) ~init:1 (sublist i len lst)) (List.init (List.length lst - len + 1) ~f:(fun i -> i))
-  |> List.fold_left ~f:max ~init:0
+  if List.length lst < len then 0
+  else
+    List.map ~f:(fun i -> List.fold_left ~f:( * ) ~init:1 (sublist i len lst)) 
+      (List.init (List.length lst - len + 1) ~f:(fun i -> i))
+    |> List.fold_left ~f:max ~init:0
+
 
 let max_product_lazy lst len =
-  let seq = Stdlib.Seq.init (List.length lst - len + 1) (fun i -> sublist i len lst) in
-  Stdlib.Seq.fold_left (fun max_prod seq -> max max_prod (List.fold_left ~f:( * ) ~init:1 seq)) 0 seq
+  if List.length lst < len then 0
+  else
+    let seq = Stdlib.Seq.init (List.length lst - len + 1) (fun i -> sublist i len lst) in
+    Stdlib.Seq.fold_left (fun max_prod seq -> max max_prod (List.fold_left ~f:( * ) ~init:1 seq)) 0 seq
+  
