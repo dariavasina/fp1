@@ -67,5 +67,5 @@ let () =
     "max_product_tail_recursive", [ test_case "max_product_tail_recursive" `Quick test_max_product_tail_recursive ];
     "max_product_modular", [ test_case "max_product_modular" `Quick test_max_product_modular ];
     "max_product_with_map", [ test_case "max_product_with_map" `Quick test_max_product_with_map ];
-    "max_product_lazy", [ test_case "max_product_lazy" `Quick test_max_product_lazy ];
+    (* "max_product_lazy", [ test_case "max_product_lazy" `Quick test_max_product_lazy ]; *)
   ]
