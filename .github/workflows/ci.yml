@@ -21,13 +21,25 @@ jobs:
         with:
           ocaml-compiler: 4.14.0
 
+      # Caching step
+      - name: Cache OPAM packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.opam
+            ~/.opam/*/lib
+            ~/.opam/*/bin
+          key: ${{ runner.os }}-opam-${{ hashFiles('**/opam.locked') }}-${{ hashFiles('**/dune') }}
+          restore-keys: |
+            ${{ runner.os }}-opam-${{ hashFiles('**/opam.locked') }}-
+            ${{ runner.os }}-opam-
+            ${{ runner.os }}-
+
       - name: Install dependencies
-        run: |
-          opam install . --deps-only --with-test
-          opam install dune -y
+        run: opam install . --deps-only --with-test
 
       - name: Update environment
-        run: echo "$OPAM_SWITCH_PREFIX/bin" >> $GITHUB_PATH
+        run: eval $(opam env)
 
       - name: Build project
         run: dune build
