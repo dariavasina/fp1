@@ -22,20 +22,12 @@ jobs:
           opam init --disable-sandboxing -y
           eval $(opam env)
 
-      # Caching step
-      - name: Cache OPAM packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.opam
-          key: ${{ runner.os }}-opam-${{ hashFiles('**/*.opam') }}
-          restore-keys: |
-            ${{ runner.os }}-opam-
-
       - name: Install dependencies
         run: |
           eval $(opam env)
           opam install dune
-          opam install alcotest seq
+          opam install alcotest -y
+          opam install seq -y
 
       - name: Build project
         run: |
