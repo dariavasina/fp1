@@ -23,7 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          opam install . --deps-only --with-test
+          opam install dune -y
           eval $(opam env)
 
       - name: Build project
