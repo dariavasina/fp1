@@ -25,7 +25,9 @@ jobs:
         run: |
           opam install . --deps-only --with-test
           opam install dune -y
-          echo "::add-path::$(opam var bin)"
+
+      - name: Update environment
+        run: echo "$OPAM_SWITCH_PREFIX/bin" >> $GITHUB_PATH
 
       - name: Build project
         run: dune build
