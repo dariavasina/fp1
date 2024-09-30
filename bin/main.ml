@@ -35,5 +35,5 @@ let () =
   let result = sum_amicable_numbers_tail_recursive 10000 in
   Printf.printf "Sum of amicable numbers under 10000: %d\n" result;
 
-  let result2 = sum_amicable_numbers_loop 10000 in 
-  Printf.printf "Sum of amicable numbes loop under 500: %d\n" result2;
+  let result2 = sum_amicable_numbers_seq 10000 in 
+  Printf.printf "Sum of amicable numbes loop under 10000: %d\n" result2;

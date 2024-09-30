@@ -1,3 +1,3 @@
 (test
- (name test_task8)
- (libraries alcotest task8))
+ (name fp1_test)
+ (libraries base ounit2 task8 task21))
