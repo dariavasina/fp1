@@ -1,5 +1,5 @@
 open Task8
-open Task14
+open Task21
 
 let number_string = "73167176531330624919225119674426574742355349194934\
 96983520312774506326239578318016984801869478851843\
@@ -29,7 +29,7 @@ let () =
   let result_tail = max_product_modular digits 13 in
   Printf.printf "Max product (tail recursive) is: %d\n" result_tail;
 
-  let result_recursive = max_product_recursive digits 13 in
+  let result_recursive = max_product_lazy digits 13 in
   Printf.printf "Max product (recursive) is: %d\n" result_recursive;
 
   let result = sum_amicable_numbers_tail_recursive 10000 in
