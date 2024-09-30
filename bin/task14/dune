@@ -1,3 +1,4 @@
 (library
  (name task14)
- (modules task14))
+ (modules task14)
+ (libraries seq))
