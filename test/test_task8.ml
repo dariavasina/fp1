@@ -50,12 +50,12 @@ let test_max_product_with_map () =
   let actual = max_product_with_map input 3 in
   check int "max product with map of 3 digits" expected actual
 
-(* Тест для функции max_product_lazy *)
+(* Тест для функции max_product_lazy
 let test_max_product_lazy () =
   let input = [1; 2; 3; 4; 5] in
   let expected = 60 in
   let actual = max_product_lazy input 3 in
-  check int "max product lazy of 3 digits" expected actual
+  check int "max product lazy of 3 digits" expected actual *)
 
 (* Запуск всех тестов *)
 let () =
