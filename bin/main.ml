@@ -29,11 +29,11 @@ let () =
   let result_tail = max_product_modular digits 13 in
   Printf.printf "Max product (tail recursive) is: %d\n" result_tail;
 
-  let result_recursive = max_product_lazy digits 13 in
+  let result_recursive = max_product_seq digits 13 in
   Printf.printf "Max product (recursive) is: %d\n" result_recursive;
 
   let result = sum_amicable_numbers_tail_recursive 10000 in
   Printf.printf "Sum of amicable numbers under 10000: %d\n" result;
 
   let result2 = sum_amicable_numbers_seq 10000 in 
-  Printf.printf "Sum of amicable numbes loop under 10000: %d\n" result2;
+  Printf.printf "Sum of amicable numbes under 10000: %d\n" result2;
