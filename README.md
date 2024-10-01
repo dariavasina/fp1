@@ -23,8 +23,8 @@ Find the thirteen adjacent digits in the 1000-digit number that have the greates
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450
 
-Решение: [task8.ml](fp1/bin/task8/task8.ml)</br>
-Тесты: [test_task8.ml](fp1/test/test_task8.ml)
+Решение: [task8.ml](bin/task8/task8.ml)</br>
+Тесты: [test_task8.ml](test/test_task8.ml)
 
 ---
 
